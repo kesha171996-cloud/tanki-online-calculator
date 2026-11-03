@@ -120,15 +120,37 @@
     return `ур. ${position}`;
   }
 
-  function getImagePath(display) {
-    const item = items[display];
-    if (item.img && item.img.startsWith(DATA.image_prefix)) {
-      const fallback = IMAGE_MAP["Любой резист"];
-      return fallback ? `images/${encodeURI(fallback)}` : "";
+  
+function getImagePath(display) {
+  const item = items[display];
+  if (!item) return "";
+
+  if (item.kind === "module") {
+    const name = `${display} ${item.name}`.toLowerCase();
+
+    const modulePhotos = [
+      ["вулкан", "Вулкан (Защита).png"],
+      ["гаус", "Гаус (Защита).png"],
+      ["гром", "Гром (Защита).png"],
+      ["изид", "Изида (Защита).png"]
+    ];
+
+    const found = modulePhotos.find(([key]) =>
+      name.includes(key)
+    );
+
+    if (found) {
+      return `images/${encodeURIComponent(found[1])}`;
     }
-    const relative = IMAGE_MAP[item.img];
-    return relative ? `images/${encodeURI(relative)}` : "";
+
+    const fallback = IMAGE_MAP["Любой резист"];
+    return fallback ? `images/${encodeURI(fallback)}` : "";
   }
+
+  const relative = IMAGE_MAP[item.img];
+  return relative ? `images/${encodeURI(relative)}` : "";
+}
+
 
   function imageMarkup(display, cardId = null) {
     const uploaded = cardId && uploadedPhotos[cardId];
