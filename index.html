@@ -10,8 +10,8 @@
   <script src="data.js" defer></script>
   <script src="initial_state.js" defer></script>
   <script src="image_map.js" defer></script>
-  <script src="app.js" defer></script>  
-<script src="photo_dropdown.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="site_fix.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
@@ -42,7 +42,6 @@
         </div>
       </div>
     </header>
-
     <main>
       <section class="section-block shop-section">
         <div class="section-title-row"><div><div class="eyebrow">КОНСТРУКТОР</div><h2>Добавить предмет</h2></div><div class="small-hint">Выбери категорию, затем предмет</div></div>
@@ -53,7 +52,6 @@
           <button class="button button-primary" id="add-item">＋ Добавить в расчёт</button>
         </div>
       </section>
-
       <section class="section-block list-section">
         <div class="section-title-row list-title-row">
           <div><div class="eyebrow">ТВОЙ РАСЧЁТ</div><h2>Мой список прокачки <span id="item-count" class="count-badge">0</span></h2></div>
@@ -67,7 +65,6 @@
         <div id="empty-state" class="empty-state" hidden><div class="empty-icon">＋</div><strong>Список пока пуст</strong><p>Добавь предмет выше — и здесь появится расчёт стоимости прокачки.</p></div>
         <div id="cards-list" class="cards-list"></div>
       </section>
-
       <section class="summary-panel" aria-live="polite">
         <div class="summary-item"><span>Предметов в списке</span><strong id="summary-count">0</strong></div>
         <div class="summary-item"><span>Без скидки</span><strong id="summary-raw">0</strong></div>
@@ -75,7 +72,6 @@
         <div class="summary-total"><span>ИТОГО К ОПЛАТЕ</span><strong id="summary-total">0</strong></div>
       </section>
     </main>
-
     <footer class="site-footer"><span>Создатель: <strong>SW_Kesha</strong></span><span>Расчёты выполняются прямо в браузере. Установка не требуется.</span></footer>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
