@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Бесплатный калькулятор стоимости прокачки в Tanki Online: пушки, корпуса, гранаты, модули и дроны.">
+  <title>Калькулятор прокачки · Tanki Online</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="initial_state.js" defer></script>
+  <script src="image_map.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-row">
+        <div class="brand-mark">SW</div>
+        <div class="brand-copy">
+          <div class="eyebrow">TANKI ONLINE · SW_KESHA</div>
+          <h1>Калькулятор прокачки</h1>
+          <p>Рассчитай стоимость прокачки до нужного уровня</p>
+        </div>
+      </div>
+      <div class="top-controls">
+        <div class="discount-control control-panel">
+          <div class="control-heading"><label for="global-discount">Общая скидка</label><strong id="global-discount-label">50%</strong></div>
+          <input id="global-discount" class="range-input" type="range" min="0" max="50" step="1" value="50">
+          <div class="range-ends"><span>0%</span><span>50%</span></div>
+        </div>
+        <div class="theme-control control-panel">
+          <label for="theme-select">Оформление</label>
+          <select id="theme-select">
+            <option value="none">Без стиля</option>
+            <option value="1">Стиль 1 · Чёрное золото</option>
+            <option value="2">Стиль 2 · Tanki Pro</option>
+            <option value="3">Стиль 3 · Огонь</option>
+            <option value="5">Стиль 5 · Классика золото</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-block shop-section">
+        <div class="section-title-row"><div><div class="eyebrow">КОНСТРУКТОР</div><h2>Добавить предмет</h2></div><div class="small-hint">Выбери категорию, затем предмет</div></div>
+        <div id="category-tabs" class="category-tabs" role="tablist" aria-label="Категории предметов"></div>
+        <div class="shop-picker control-panel">
+          <div class="shop-preview" id="shop-preview"></div>
+          <div class="shop-select-wrap"><label for="item-select">Предмет</label><select id="item-select"></select></div>
+          <button class="button button-primary" id="add-item">＋ Добавить в расчёт</button>
+        </div>
+      </section>
+
+      <section class="section-block list-section">
+        <div class="section-title-row list-title-row">
+          <div><div class="eyebrow">ТВОЙ РАСЧЁТ</div><h2>Мой список прокачки <span id="item-count" class="count-badge">0</span></h2></div>
+          <div class="list-actions">
+            <button class="button button-quiet" id="export-settings">⇩ Сохранить настройки</button>
+            <label class="button button-quiet upload-settings-label" for="import-settings">⇧ Загрузить настройки</label>
+            <input id="import-settings" class="visually-hidden" type="file" accept="application/json,.json">
+            <button class="button button-danger-quiet" id="clear-all">Очистить список</button>
+          </div>
+        </div>
+        <div id="empty-state" class="empty-state" hidden><div class="empty-icon">＋</div><strong>Список пока пуст</strong><p>Добавь предмет выше — и здесь появится расчёт стоимости прокачки.</p></div>
+        <div id="cards-list" class="cards-list"></div>
+      </section>
+
+      <section class="summary-panel" aria-live="polite">
+        <div class="summary-item"><span>Предметов в списке</span><strong id="summary-count">0</strong></div>
+        <div class="summary-item"><span>Без скидки</span><strong id="summary-raw">0</strong></div>
+        <div class="summary-item saving-summary"><span>Экономия</span><strong id="summary-saving">0</strong></div>
+        <div class="summary-total"><span>ИТОГО К ОПЛАТЕ</span><strong id="summary-total">0</strong></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>Создатель: <strong>SW_Kesha</strong></span><span>Расчёты выполняются прямо в браузере. Установка не требуется.</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
